@@ -129,5 +129,6 @@ MEDIA_URL = '/tmp/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_ROOT = '/tmp/'
 
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
