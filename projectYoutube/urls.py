@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('entertainx/', views.getNextrandom),
     path('gettitle/', views.getTitle),
+    path('videoupload/', views.VideoUpload.as_view()),
+
     path('api-auth/', include('rest_framework.urls')),
 
 ]
