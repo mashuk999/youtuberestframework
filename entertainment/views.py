@@ -28,17 +28,6 @@ def getNextrandom(request):
         latestdata = Entertainmentdb.objects.latest('id')
         serializers = Entertainmentserializer(latestdata)
         return JsonResponse(serializers.data, safe=False)
-    # if request.method=='POST':
-    #    title=request.POST.get('title')
-    #    nextran = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=random.randrange(245, 350)))
-    #    # obj=datetime.datetime.strptime(nextran,"%Y-%m-%d %H:%M:%S")
-    #    ness=nextran.replace(microsecond=0)
-    #    # print(type(obj))phone
-    #    obj=Entertainmentdb(title=title,nextrandom=ness)
-    #    obj.save()
-    #    latestdata = Entertainmentdb.objects.latest('id')
-    #    serializers = Entertainmentserializer(latestdata)
-    #    return JsonResponse(serializers.data, safe=False)
 
 
     return HttpResponse('ok')

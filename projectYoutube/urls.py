@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from entertainment import views
+from entertainment import feed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('entertainx/', views.getNextrandom),
     path('gettitle/', views.getTitle),
     path('videoupload/', views.VideoUpload.as_view()),
+    path('feed/', feed.Videofeed()),
 
     path('api-auth/', include('rest_framework.urls')),
 
