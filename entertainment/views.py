@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from entertainment import processArticle
 from .models import *
+import os
+from projectYoutube import  settings
 from .serializer import Entertainmentserializer,SaveVideoserializer
 import datetime,random
 import xmltodict
@@ -16,7 +18,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from django.views.static import serve
 
 from rest_framework import generics
 
@@ -72,3 +74,13 @@ class VideoUpload(generics.CreateAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+def downloadvideofromheroku(request):
+    filepath = request.GET['urlpath']
+    print(filepath)
+    print(settings.MEDIA_ROOT)
+    print(os.path.join(settings.MEDIA_ROOT, filepath))
+    return serve(request,"",os.path.join(settings.MEDIA_ROOT,filepath))
+

@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('entertainx/', views.getNextrandom),
     path('gettitle/', views.getTitle),
+    path('download/', views.downloadvideofromheroku),
     path('videoupload/', views.VideoUpload.as_view()),
     path('feed/', feed.Videofeed()),
 
