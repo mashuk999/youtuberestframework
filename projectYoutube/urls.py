@@ -19,7 +19,8 @@ from entertainment import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('entertainx/', views.hello),
+    path('entertainx/', views.getNextrandom),
+    path('gettitle/', views.getTitle),
     path('api-auth/', include('rest_framework.urls')),
 
 ]

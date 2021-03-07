@@ -5,4 +5,4 @@ from django.db import models
 
 class Entertainmentdb(models.Model):
     title=models.CharField(max_length=500)
-    date=models.DateTimeField()
+    nextrandom=models.DateTimeField()
