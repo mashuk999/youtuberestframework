@@ -15,6 +15,10 @@ import os
 import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import export as export
+
+import projectYoutube
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -131,3 +135,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'projectYoutube.settings'
