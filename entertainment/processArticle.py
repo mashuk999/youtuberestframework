@@ -24,7 +24,11 @@ def findArticle():
 
     if web_page is None:
         print('Webpage response from upstream server is empty')
-    content = scrapArticle(web_page)
+
+    try:
+        content = scrapArticle(web_page)
+    except:
+        return jsonFormat['title'], jsonFormat['description'], '', ''
     YTtitle = getYoutubeTitle(url)
 
 
@@ -66,8 +70,8 @@ def getArticleWebpage(url):
 
 def scrapArticle(web_page):
     soup = BeautifulSoup(web_page, 'html.parser')
-    content = soup.find("div", {"class": "article-desc ul_styling", })
-    contentn = content.find("div", {"class": "article-desc ul_styling", })
+    content = soup.find("div", {"class": "article-desc ul_styling"})
+    contentn = content.find("div", {"class": "live-titles"})
     if contentn is not None:
         content = contentn
 
