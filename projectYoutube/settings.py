@@ -130,11 +130,11 @@ STATIC_ROOt =os.path.join(BASE_DIR,'staticfiles')
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'projectYoutube.settings'
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'projectYoutube.settings'
