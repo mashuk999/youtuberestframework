@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 from entertainment import processArticle
 from .models import *
 import os
-from django.conf import settings
+from projectYoutube import  settings
 from .serializer import Entertainmentserializer,SaveVideoserializer
 import datetime,random
 import xmltodict
