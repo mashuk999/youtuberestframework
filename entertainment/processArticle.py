@@ -64,8 +64,8 @@ def getArticleWebpage(url):
 
 def scrapArticle(web_page):
     soup = BeautifulSoup(web_page, 'html.parser')
-    content =  soup.find("div", {"class" : "article-desc ul_styling"})
-    contentn = content.find("div",{"style":"text-align: justify;"})
+    content = soup.find("div", {"class": "article-desc ul_styling", })
+    contentn = content.find("div", {"class": "article-desc ul_styling", })
     if contentn is not None:
         content = contentn
 
