@@ -21,7 +21,9 @@ def findArticle():
     url = jsonFormat['guid']['#text']
     
     web_page = getArticleWebpage(url)
-    
+
+    if web_page is None:
+        print('Webpage response from upstream server is empty')
     content = scrapArticle(web_page)
     YTtitle = getYoutubeTitle(url)
 
@@ -42,7 +44,7 @@ def getUniqueArticle(jsonFormat):
 
 def getLatestXML():
     req = urllib.request.Request(
-    'https://www.amarujala.com/rss/etawah.xml',
+    'https://www.amarujala.com/rss/breaking-news.xml',
     data=None, 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 4.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36',
