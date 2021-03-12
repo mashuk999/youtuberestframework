@@ -16,7 +16,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 
 from rest_framework import status
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -24,6 +24,7 @@ from django.views.static import serve
 
 from rest_framework import generics
 
+import cloudinary.uploader
 
 
 @csrf_exempt
@@ -77,6 +78,24 @@ class VideoUpload(generics.CreateAPIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class VideoUploadWithCloudinary(APIView):
+    parser_classes = (
+        MultiPartParser,
+        JSONParser,
+    )
+
+    @staticmethod
+    def post(request):
+        file = request.data.get('video')
+        title = request.data.get('title')
+        upload_data = cloudinary.uploader.upload(file)
+        obj = SaveVideo(title=title,videoPublicId=upload_data['public_id'],videoUrl=upload_data['secure_url'])
+        obj.save()
+        
+        return Response({
+            'status': 'success',
+            'data': upload_data,
+        }, status=201)
 
 
 def downloadvideofromheroku(request):
