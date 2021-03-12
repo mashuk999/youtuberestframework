@@ -47,9 +47,11 @@ jobs:
 #         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
 #         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Uploading to IBM 
+      env:
+        APIKEY: ${{ secrets.APIKEY }}
       run: |
         curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
-        ibmcloud login --apikey APIKEY
+        ibmcloud login --apikey "$APIKEY"
         ibmcloud cf install
         ibmcloud target --cf
         ls
