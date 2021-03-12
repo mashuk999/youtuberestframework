@@ -10,7 +10,9 @@ class Entertainmentdb(models.Model):
 
 class SaveVideo(models.Model):
     title=models.CharField(max_length=500)
-    video=models.FileField(upload_to='',max_length=800)
+    #video=models.FileField(upload_to='',max_length=800)
+    videoPublicId = models.CharField(max_length=1000)
+    videoUrl = models.CharField(max_length=1000)
     # slug = models.SlugField(max_length=200, unique=True)
 
 
