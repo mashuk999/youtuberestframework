@@ -19,10 +19,11 @@ class Videofeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.video
+        return item.videoPublicId
 
     def item_link(self, item):
-        return 'http://lit-sierra-15246.herokuapp.com/download?urlpath='+str(item.video)
+        # return 'http://lit-sierra-15246.herokuapp.com/download?urlpath='+str(item.video)
+        return item.videoUrl
 
     # Only needed if the model has no get_absolute_url method
     # def item_link(self, item):
