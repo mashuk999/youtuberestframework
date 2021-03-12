@@ -1,6 +1,7 @@
 # from django.shortcuts import render,HttpResponse
+from pathlib import Path
 
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from entertainment import processArticle
@@ -79,9 +80,36 @@ class VideoUpload(generics.CreateAPIView):
 
 
 def downloadvideofromheroku(request):
-    filepath = request.GET['urlpath']
-    print(filepath)
-    print(settings.MEDIA_ROOT)
-    print(os.path.join(settings.MEDIA_ROOT, filepath))
-    return serve(request,"",os.path.join(settings.MEDIA_ROOT,filepath))
+    try:
+        filepath = request.GET['urlpath']
+        print(filepath)
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+        print(MEDIA_ROOT)
+        print(os.path.join(MEDIA_ROOT, filepath))
 
+        response = HttpResponse()
+        response['Content-Type'] = 'video/mp4'
+        response['X-Accel-Redirect'] = os.path.join(MEDIA_ROOT,filepath)
+        response['Content-Disposition'] = 'attachment;filename=' + os.path.join(MEDIA_ROOT,filepath)
+    except Exception:
+        raise Http404
+    return response
+
+def downloadvideofromheroku2(request):
+    try:
+        filepath = request.GET['urlpath']
+        print(filepath)
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+        print(MEDIA_ROOT)
+        print(os.path.join(MEDIA_ROOT, filepath))
+
+        from wsgiref.util import FileWrapper
+
+        file = FileWrapper(open(os.path.join(MEDIA_ROOT,filepath), 'rb'))
+        response = HttpResponse(file, content_type='video/mp4')
+        response['Content-Disposition'] = 'attachment; filename=my_video.mp4'
+        return response
+    except Exception:
+        raise Http404

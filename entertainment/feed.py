@@ -22,7 +22,7 @@ class Videofeed(Feed):
         return item.video
 
     def item_link(self, item):
-        return 'http://lit-sierra-15246.herokuapp.com/download?urlpath='+str(item.video)
+        return 'https://youtuberestframework.eu-gb.cf.appdomain.cloud/download?urlpath='+str(item.video)
 
     # Only needed if the model has no get_absolute_url method
     # def item_link(self, item):

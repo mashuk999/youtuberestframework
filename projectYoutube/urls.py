@@ -23,6 +23,7 @@ urlpatterns = [
     path('entertainx/', views.getNextrandom),
     path('gettitle/', views.getTitle),
     path('download/', views.downloadvideofromheroku),
+    path('download2/', views.downloadvideofromheroku2),
     path('videoupload/', views.VideoUpload.as_view()),
     path('feed/', feed.Videofeed()),
 
