@@ -50,9 +50,10 @@ jobs:
       env:
         APIKEY: ${{ secrets.APIKEY }}
       run: |
-        curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
-        ibmcloud login --apikey $APIKEY
-        ibmcloud cf install
-        ibmcloud target --cf
-        ls
-        ibmcloud cf push youtuberestframework
+        echo $APIKEY
+        # curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
+        # ibmcloud login --apikey $APIKEY
+        # ibmcloud cf install
+        # ibmcloud target --cf
+        # ls
+        # ibmcloud cf push youtuberestframework
