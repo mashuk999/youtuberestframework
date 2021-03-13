@@ -48,11 +48,11 @@ jobs:
 #         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Uploading to IBM 
       env:
-        APIKEY: ${{ secrets.APIKEY }}
+        APIKEY: ${{ secrets.IBMCLOUDAPIKEY }}
       run: |
         curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
-        ibmcloud login --apikey $APIKEY
+        ibmcloud login --apikey lLKLaMq1Z0EjlAwvg9o9KylKYwRmm2-acobna4WI4xQX -r eu-gb
         ibmcloud cf install
         ibmcloud target --cf
         ls
-        ibmcloud cf push youtuberestframework
+        ibmcloud cf push ytserver

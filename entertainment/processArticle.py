@@ -71,14 +71,14 @@ def getArticleWebpage(url):
 def scrapArticle(web_page):
     soup = BeautifulSoup(web_page, 'html.parser')
     content = soup.find("div", {"class": "article-desc ul_styling"})
-    contentn = content.find("div", {"class": "text-align: justify;"})
-    if contentn is not None:
-        content = contentn
+    # contentn = content.find("div", {"class": "text-align: justify;"})
+    # if contentn is not None:
+    #     content = contentn
 
-    for divs in content.findAll("div"):
-        divs.extract()
-    for divs in content.findAll("blockquote"):
-        divs.extract()
+    # for divs in content.findAll("div"):
+    #     divs.extract()
+    # for divs in content.findAll("blockquote"):
+    #     divs.extract()
 
     return content.get_text()
 
