@@ -75,10 +75,10 @@ def scrapArticle(web_page):
     # if contentn is not None:
     #     content = contentn
 
-    for divs in content.findAll("div"):
-        divs.extract()
-    for divs in content.findAll("blockquote"):
-        divs.extract()
+    # for divs in content.findAll("div"):
+    #     divs.extract()
+    # for divs in content.findAll("blockquote"):
+    #     divs.extract()
 
     return content.get_text()
 
