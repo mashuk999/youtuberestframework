@@ -51,6 +51,7 @@ jobs:
         APIKEY: ${{ secrets.APIKEY }}
       run: |
         echo $APIKEY
+        echo "Secret Displayed"
         # curl -sL https://raw.githubusercontent.com/IBM-Cloud/ibm-cloud-developer-tools/master/linux-installer/idt-installer | bash
         # ibmcloud login --apikey $APIKEY
         # ibmcloud cf install
