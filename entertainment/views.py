@@ -1,29 +1,16 @@
-# from django.shortcuts import render,HttpResponse
 from pathlib import Path
-
 from django.http import HttpResponse, JsonResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 from entertainment import processArticle
 from .models import *
 import os
-
-from django.conf import  settings
 from .serializer import Entertainmentserializer,SaveVideoserializer
 import datetime,random
-import xmltodict
-from rest_framework.viewsets import ViewSet
-from rest_framework.response import Response
-
 from rest_framework import status
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.views.static import serve
-
-
 from rest_framework import generics
+
+
 
 
 
