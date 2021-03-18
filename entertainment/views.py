@@ -84,11 +84,12 @@ def savevideourl(request):
         # file = request.data.get('video')
         title = request.data.get('title')
         videopublicid=request.data.get('videoPublicId')
-        videourl=request.data.get('videourl')
+        videourl=request.data.get('videoUrl')
         obj = SaveVideo(title=title,videoPublicId=videopublicid,videoUrl=videourl)
         obj.save()
         print('save in db')
-        return HttpResponse('dome')
+        return HttpResponse('done')
+    return HttpResponse('Its a get request')
 
 
 
