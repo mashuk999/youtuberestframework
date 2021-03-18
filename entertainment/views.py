@@ -78,24 +78,18 @@ class VideoUpload(generics.CreateAPIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class VideoUploadWithCloudinary(APIView):
-    parser_classes = (
-        MultiPartParser,
-        JSONParser,
-    )
 
-    @staticmethod
-    def post(request):
+
+def post(request):
+    if request.method=='POST':
         # file = request.data.get('video')
         title = request.data.get('title')
         videopublicid=request.data.get('videoPublicId')
         videourl=request.data.get('videourl')
         obj = SaveVideo(title=title,videoPublicId=videopublicid,videoUrl=videourl)
         obj.save()
-        
-        return Response({
-            'status': 'success',
-        }, status=201)
+        print('save in db')
+
 
 
 def downloadvideofromheroku(request):
