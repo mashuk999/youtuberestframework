@@ -55,5 +55,5 @@ jobs:
         ibmcloud cf install
         ibmcloud target --cf
         ls
-        ibmcloud cf push ytserver
+        # ibmcloud cf push ytserver
         ibmcloud cf logs ytserver --recent
