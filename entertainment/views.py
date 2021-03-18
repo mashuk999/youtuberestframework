@@ -24,7 +24,6 @@ from django.views.static import serve
 
 from rest_framework import generics
 
-import cloudinary.uploader
 
 
 @csrf_exempt
@@ -80,7 +79,7 @@ class VideoUpload(generics.CreateAPIView):
 
 
 
-def post(request):
+def savevideourl(request):
     if request.method=='POST':
         # file = request.data.get('video')
         title = request.data.get('title')

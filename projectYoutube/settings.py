@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
-import cloudinary
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # import export as export
 
@@ -45,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'entertainment',
     'rest_framework',
-    'cloudinary',
 ]
 # REST_FRAMEWORK = {
 #     #this bit makes the magic.
@@ -150,8 +148,4 @@ django_heroku.settings(locals())
 os.environ['DJANGO_SETTINGS_MODULE'] = 'projectYoutube.settings'
 
 
-cloudinary.config(
-  cloud_name = 'drpb4oxcc',
-  api_key = '354327896332831',
-  api_secret = 'CvetvSAc2xW33TRe_CaitVsi9S8'
-)
+
