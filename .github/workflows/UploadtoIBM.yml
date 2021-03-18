@@ -56,3 +56,4 @@ jobs:
         ibmcloud target --cf
         ls
         ibmcloud cf push youtuberestframework
+        cf logs youtuberestframework --recent
