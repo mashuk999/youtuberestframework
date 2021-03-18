@@ -86,15 +86,15 @@ class VideoUploadWithCloudinary(APIView):
 
     @staticmethod
     def post(request):
-        file = request.data.get('video')
+        # file = request.data.get('video')
         title = request.data.get('title')
-        upload_data = cloudinary.uploader.upload_large(file)
-        obj = SaveVideo(title=title,videoPublicId=upload_data['public_id'],videoUrl=upload_data['secure_url'])
+        videopublicid=request.data.get('videoPublicId')
+        videourl=request.data.get('videourl')
+        obj = SaveVideo(title=title,videoPublicId=videopublicid,videoUrl=videourl)
         obj.save()
         
         return Response({
             'status': 'success',
-            'data': upload_data,
         }, status=201)
 
 
