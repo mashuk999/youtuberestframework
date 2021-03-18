@@ -22,6 +22,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.views.static import serve
 
+
 from rest_framework import generics
 
 
@@ -79,12 +80,15 @@ class VideoUpload(generics.CreateAPIView):
 
 
 
+
+
+@csrf_exempt
 def savevideourl(request):
     if request.method=='POST':
         # file = request.data.get('video')
-        title = request.data.get('title')
-        videopublicid=request.data.get('videoPublicId')
-        videourl=request.data.get('videourl')
+        title = request.POST.get('title')
+        videopublicid=request.POST.get('videoPublicId')
+        videourl=request.POST.get('videoUrl')
         obj = SaveVideo(title=title,videoPublicId=videopublicid,videoUrl=videourl)
         obj.save()
         print('save in db')
