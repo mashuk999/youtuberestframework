@@ -88,6 +88,7 @@ def savevideourl(request):
         obj = SaveVideo(title=title,videoPublicId=videopublicid,videoUrl=videourl)
         obj.save()
         print('save in db')
+        return HttpResponse('dome')
 
 
 
