@@ -10,15 +10,10 @@ class Entertainmentdb(models.Model):
 
 class SaveVideo(models.Model):
     title=models.CharField(max_length=500)
-    #video=models.FileField(upload_to='',max_length=800)
     videoPublicId = models.CharField(max_length=1000)
     videoUrl = models.CharField(max_length=1000)
-    # slug = models.SlugField(max_length=200, unique=True)
+    date=models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
         return self.title
-
-    # def get_absolute_url(self):
-    #     from django.urls import reverse
-    #     return reverse("post_detail", kwargs={"slug": str(self.slug)})

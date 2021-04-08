@@ -19,7 +19,7 @@ class Videofeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.videoPublicId
+        return item.title
 
     def item_link(self, item):
         # return 'http://lit-sierra-15246.herokuapp.com/download?urlpath='+str(item.video)

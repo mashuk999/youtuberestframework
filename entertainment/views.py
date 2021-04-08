@@ -14,33 +14,7 @@ from rest_framework import generics
 
 
 
-@csrf_exempt
-def getNextrandom(request):
-    if request.method=='GET':
-        latestdata = Entertainmentdb.objects.latest('id')
-        serializers = Entertainmentserializer(latestdata)
-        return JsonResponse(serializers.data, safe=False)
 
-
-    return HttpResponse('ok')
-
-
-
-def getTitle(request):
-    if request.method=='GET':
-        title, summary, content, YTtitle = processArticle.findArticle()
-        data={
-            'title':title,
-            'summary':summary,
-            'content':content,
-            'Ytitle':YTtitle
-        }
-        nextran = str(datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta( minutes=random.randrange(245, 350)))
-        nextran = nextran[:19]
-        nextran=(datetime.datetime.strptime(nextran,"%Y-%m-%d %H:%M:%S"))
-        obj=Entertainmentdb(title=title,nextrandom=nextran)
-        obj.save()
-        return JsonResponse(data,safe=False)
 
 
 
@@ -69,17 +43,7 @@ class VideoUpload(generics.CreateAPIView):
 
 
 
-@csrf_exempt
-def savevideourl(request):
-    if request.method=='POST':
-        # file = request.data.get('video')
-        title = request.POST.get('title')
-        videopublicid=request.POST.get('videoPublicId')
-        videourl=request.POST.get('videoUrl')
-        obj = SaveVideo(title=title,videoPublicId=videopublicid,videoUrl=videourl)
-        obj.save()
-        print('save in db')
-        return HttpResponse('dome')
+
 
 
 
@@ -91,7 +55,6 @@ def downloadvideofromheroku(request):
         MEDIA_ROOT = os.path.join(BASE_DIR, "media")
         print(MEDIA_ROOT)
         print(os.path.join(MEDIA_ROOT, filepath))
-
         response = HttpResponse()
         response['Content-Type'] = 'video/mp4'
         response['X-Accel-Redirect'] = os.path.join(MEDIA_ROOT,filepath)
@@ -108,12 +71,37 @@ def downloadvideofromheroku2(request):
         MEDIA_ROOT = os.path.join(BASE_DIR, "media")
         print(MEDIA_ROOT)
         print(os.path.join(MEDIA_ROOT, filepath))
-
         from wsgiref.util import FileWrapper
-
         file = FileWrapper(open(os.path.join(MEDIA_ROOT,filepath), 'rb'))
         response = HttpResponse(file, content_type='video/mp4')
         response['Content-Disposition'] = 'attachment; filename=my_video.mp4'
         return response
     except Exception:
         raise Http404
+
+
+def test(request):
+    currdate=datetime.datetime.now()
+    b=datetime.timedelta(2)
+    c=currdate-b
+    print(c.date())
+    for i in SaveVideo.objects.all():
+        a=i.date.date()
+        print(a)
+        if a==currdate.date():
+            print('good')
+            i.delete()
+
+
+    # data=SaveVideo.objects.latest('id')
+    # print(data.date)
+    # a=data.date.date()
+    # b=datetime.timedelta(2)
+    # data=a-b
+    # print(data)
+    # d=SaveVideo(date=data)
+    # d.save()
+
+    return HttpResponse('ok')
+
+

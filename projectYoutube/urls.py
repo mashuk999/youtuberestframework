@@ -19,13 +19,12 @@ from entertainment import views
 from entertainment import feed
 
 urlpatterns = [
+    path('news/', include('news.urls')),
     path('admin/', admin.site.urls),
-    path('entertainx/', views.getNextrandom),
-    path('gettitle/', views.getTitle),
     path('download/', views.downloadvideofromheroku),
+    path('test/', views.test),
     path('download2/', views.downloadvideofromheroku2),
     path('videoupload/', views.VideoUpload.as_view()),
-    path('videouploadwithcloudinary/', views.savevideourl),
     path('feed/', feed.Videofeed()),
 
     path('api-auth/', include('rest_framework.urls')),
