@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from entertainment import views
 from entertainment import feed
+from entertainment import cleanupfunction
 
 urlpatterns = [
     path('news/', include('news.urls')),
@@ -26,6 +27,7 @@ urlpatterns = [
     path('download2/', views.downloadvideofromheroku2),
     path('videoupload/', views.VideoUpload.as_view()),
     path('feed/', feed.Videofeed()),
+    path('clean/', cleanupfunction.cleanupfunctions),
 
     path('api-auth/', include('rest_framework.urls')),
 

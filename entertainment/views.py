@@ -13,15 +13,6 @@ from rest_framework import generics
 
 
 
-
-
-
-
-
-# def videosave(request):
-#     if request.method=='POST':
-
-
 class VideoUpload(generics.CreateAPIView):
     # parser_classes = [MultiPartParser, FormParser]
     # permission_classes = [IsAuthenticated] test now
@@ -38,11 +29,6 @@ class VideoUpload(generics.CreateAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
 
 
 
@@ -93,15 +79,9 @@ def test(request):
             i.delete()
 
 
-    # data=SaveVideo.objects.latest('id')
-    # print(data.date)
-    # a=data.date.date()
-    # b=datetime.timedelta(2)
-    # data=a-b
-    # print(data)
-    # d=SaveVideo(date=data)
-    # d.save()
-
     return HttpResponse('ok')
+
+
+
 
 
