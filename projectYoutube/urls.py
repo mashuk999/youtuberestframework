@@ -27,7 +27,7 @@ urlpatterns = [
     path('download2/', views.downloadvideofromheroku2),
     path('videoupload/', views.VideoUpload.as_view()),
     path('feed/', feed.Videofeed()),
-    path('clean/', cleanupfunction.cleanupfunctions),
+    # path('clean/', cleanupfunction.cleanupfunctions),
 
     path('api-auth/', include('rest_framework.urls')),
 
