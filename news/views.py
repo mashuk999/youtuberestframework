@@ -46,7 +46,8 @@ def savevideourl(request):
         title = request.POST.get('title')
         videopublicid = request.POST.get('videoPublicId')
         videourl = request.POST.get('videoUrl')
-        obj = SaveVideo(title=title, videoPublicId=videopublicid, videoUrl=videourl)
+        nameofvideo=request.POST.get('name')
+        obj = SaveVideo(title=title, videoPublicId=videopublicid, videoUrl=videourl,nameofvideo=nameofvideo)
         obj.save()
 
         print('save in db')
