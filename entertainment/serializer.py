@@ -19,10 +19,16 @@ class Entertainmentserializer(serializers.Serializer):
 class SaveVideoserializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SaveVideo
-        fields = ['title','video']
+        fields = '__all__'
 
     def create(self, validated_data):
         return SaveVideo.objects.create(**validated_data)
+
+
+class Get_Savevideoserializer(serializers.ModelSerializer):
+    class Meta:
+        model = SaveVideo
+        fields = ['nameofvideo']
 
 
 
