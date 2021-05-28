@@ -14,7 +14,7 @@ def getNextrandom(request):
         latestdata = Entertainmentdb.objects.latest('id')
         serializers = Entertainmentserializer(latestdata)
         return JsonResponse(serializers.data, safe=False)
-        return HttpResponse('ok')
+    return HttpResponse('ok')
 
 
 
@@ -48,5 +48,7 @@ def savevideourl(request):
 
         print('save in db')
         return HttpResponse('done')
+    else:
+        print('video not saved')
 
 
