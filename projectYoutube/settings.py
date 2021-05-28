@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'entertainment',
-    'rest_framework',
     'news',
+    'technologyreview',
+    'rest_framework',
 ]
 # REST_FRAMEWORK = {
 #     #this bit makes the magic.

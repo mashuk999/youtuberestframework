@@ -15,21 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from entertainment import views
-from entertainment import feed
-from entertainment import cleanupfunction
 
 urlpatterns = [
     path('news/', include('news.urls')),
+    path('techno/', include('technologyreview.urls')),
+    path('entertain/', include('entertainment.urls')),
     path('admin/', admin.site.urls),
-    path('download/', views.downloadvideofromheroku),
-    path('test/', views.test),
-    path('download2/', views.downloadvideofromheroku2),
-    path('videoupload/', views.VideoUpload.as_view()),
-    path('feed/', feed.Videofeed()),
-    path('clean/', cleanupfunction.cleanupfunction),
 
 
+    # Rest-FrameWork urls
     path('api-auth/', include('rest_framework.urls')),
 
 ]

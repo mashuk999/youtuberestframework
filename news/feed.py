@@ -2,7 +2,7 @@ from django.contrib.syndication.views import Feed
 from django.core.exceptions import ImproperlyConfigured
 from django.shortcuts import redirect
 from django.template.defaultfilters import truncatewords
-from .models import SaveVideo
+from .models import SaveVideo_news
 from django.urls import reverse
 from django.http import HttpResponse, JsonResponse
 
@@ -13,7 +13,7 @@ class Videofeed(Feed):
     description = "New posts of my blog."
 
     def items(self):
-        return SaveVideo.objects.all()
+        return SaveVideo_news.objects.all()
 
     def item_title(self, item):
         return item.title

@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Entertainmentdb)
-admin.site.register(SaveVideo)
+admin.site.register(SaveVideo_entertainment)
 
 # Register your models here.

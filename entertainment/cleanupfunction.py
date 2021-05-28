@@ -8,6 +8,6 @@ from entertainment.serializer import *
 @api_view(('GET',))
 def cleanupfunction(request):
     if request.method == 'GET':
-        topics = SaveVideo.objects.all()
+        topics = SaveVideo_entertainment.objects.all()
         serializer = Get_Savevideoserializer(topics, many=True)
         return Response(serializer.data)

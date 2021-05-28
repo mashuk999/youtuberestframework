@@ -1,14 +1,7 @@
 from django.db import models
 
-# Create your models here.
 
-
-class Entertainmentdb(models.Model):
-    title=models.CharField(max_length=500)
-    nextrandom=models.DateTimeField()
-
-
-class SaveVideo(models.Model):
+class SaveVideo_entertainment(models.Model):
     title=models.CharField(max_length=500)
     nameofvideo=models.CharField(max_length=200)
     videoPublicId = models.CharField(max_length=1000)

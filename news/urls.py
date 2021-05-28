@@ -1,15 +1,15 @@
-from django.contrib import admin
 from django.urls import path,include
 from . import views
-
+from . import feed
 
 
 
 urlpatterns = [
 
-    path('entertainx/', views.getNextrandom),
+    path('nextrandom/', views.getNextrandom),
     path('gettitle/', views.getTitle),
-    path('videouploadwithcloudinary/', views.savevideourl),
+    path('savevideo/', views.savevideourl),
+    path('feed/', feed.Videofeed()),
 
     # path('test/', views.test),
 
