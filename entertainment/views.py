@@ -9,7 +9,7 @@ from rest_framework import generics
 class VideoUpload(generics.CreateAPIView):
     serializer_class = SaveVideoserializer
     def post(self, request, format=None):
-        serializer = SaveVideoserializer(data=request.data)
+        serializer = SaveVideoserializer(data=request.data,context={'request':request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
