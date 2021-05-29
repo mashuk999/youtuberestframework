@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . import processArticle
 from .models import *
-from entertainment.serializer import Entertainmentserializer,SaveVideoserializer
+from entertainment.serializer import Entertainmentserializer
 import datetime,random
 
 
