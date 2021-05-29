@@ -1,9 +1,8 @@
 from rest_framework import serializers
 from .models import *
-
 from rest_framework.serializers import Serializer, FileField
 
-# Serializers define the API representation.
+
 class UploadSerializer(Serializer):
     file_uploaded = FileField()
     class Meta:
@@ -16,7 +15,7 @@ class Entertainmentserializer(serializers.Serializer):
     nextrandom=serializers.DateTimeField()
 
 
-class SaveVideoserializer(serializers.HyperlinkedModelSerializer):
+class SaveVideoserializer(serializers.ModelSerializer):
     class Meta:
         model = SaveVideo_entertainment
         fields = '__all__'
