@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+
+admin.site.register(Technodb)
+admin.site.register(SaveVideo_technology)
+

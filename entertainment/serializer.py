@@ -15,6 +15,15 @@ class Entertainmentserializer(serializers.Serializer):
     nextrandom=serializers.DateTimeField()
 
 
+class Newsserializer(serializers.Serializer):
+    title=serializers.CharField(max_length=500)
+    nextrandom=serializers.DateTimeField()
+
+class Technologyserializer(serializers.Serializer):
+    title=serializers.CharField(max_length=500)
+    nextrandom=serializers.DateTimeField()
+
+
 class SaveVideoserializer(serializers.ModelSerializer):
     class Meta:
         model = SaveVideo_entertainment

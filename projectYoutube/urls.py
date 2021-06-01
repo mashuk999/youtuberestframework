@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from news import feed
 
 urlpatterns = [
     path('news/', include('news.urls')),
     path('techno/', include('technologyreview.urls')),
     path('entertain/', include('entertainment.urls')),
     path('admin/', admin.site.urls),
-
+    path('feed/', feed.Videofeed()),
 
     # Rest-FrameWork urls
     path('api-auth/', include('rest_framework.urls')),

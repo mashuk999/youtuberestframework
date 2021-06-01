@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . import processArticle
 from .models import *
-from entertainment.serializer import Entertainmentserializer
+from entertainment.serializer import Newsserializer
 import datetime,random
 
 
@@ -11,8 +11,8 @@ import datetime,random
 @csrf_exempt
 def getNextrandom(request):
     if request.method=='GET':
-        latestdata = Entertainmentdb.objects.latest('id')
-        serializers = Entertainmentserializer(latestdata)
+        latestdata = Newsdb.objects.latest('id')
+        serializers = Newsserializer(latestdata)
         return JsonResponse(serializers.data, safe=False)
     return HttpResponse('ok')
 
@@ -30,7 +30,7 @@ def getTitle(request):
         nextran = str(datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta( minutes=random.randrange(245, 350)))
         nextran = nextran[:19]
         nextran=(datetime.datetime.strptime(nextran,"%Y-%m-%d %H:%M:%S"))
-        obj=Entertainmentdb(title=title,nextrandom=nextran)
+        obj=Newsdb(title=title,nextrandom=nextran)
         obj.save()
         return JsonResponse(data,safe=False)
 

@@ -6,9 +6,11 @@ from . import views
 
 urlpatterns = [
 
-    # path('test/', views.test),
 
-    # path('test/', views.test),
+    path('gettitle/', views.getTitle),
+    path('nextrandom/', views.getNextrandom),
+    path('savevideo/', views.savevideourl),
+
 
 
 ]

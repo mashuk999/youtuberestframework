@@ -1,15 +1,50 @@
-# from django.shortcuts import render,HttpResponse
-#
-# def test(request):
-#     url='https://hindi.gizbot.com/gadgets/amazfit-will-launch-gt0-gtr-2e-and-gts-2e-on-19th-jan-features-specifications-and-price-020114.html'
-#     r=requests.get(url)
-#     htmlcontent=r.content
-#     soup=BeautifulSoup(htmlcontent,'html.parser')
-#     # print(soup.prettify)
-#     content=soup.find_all('p')
-#     # print(content.get_text())
-#     a=''
-#     for i in content:
-#         a=a+i.get_text()
-#
-    # return HttpResponse(a)
+from django.http import JsonResponse
+from django.shortcuts import render,HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from entertainment.serializer import *
+from . import techno_processArticle
+import datetime,random
+from.models import *
+
+
+@csrf_exempt
+def getNextrandom(request):
+    if request.method=='GET':
+        latestdata = Technodb.objects.latest('id')
+        serializers = Technologyserializer(latestdata)
+        return JsonResponse(serializers.data, safe=False)
+    return HttpResponse('ok')
+
+
+
+def getTitle(request):
+    if request.method=='GET':
+        title, summary, content, YTtitle = techno_processArticle.findArticle()
+        data={
+            'title':title,
+            'summary':summary,
+            'content':content,
+            'Ytitle':YTtitle
+        }
+        nextran = str(datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta( minutes=random.randrange(245, 350)))
+        nextran = nextran[:19]
+        nextran=(datetime.datetime.strptime(nextran,"%Y-%m-%d %H:%M:%S"))
+        obj=Technodb(title=title,nextrandom=nextran)
+        obj.save()
+        return JsonResponse(data,safe=False)
+
+
+
+@csrf_exempt
+def savevideourl(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        videopublicid = request.POST.get('videoPublicId')
+        videourl = request.POST.get('videoUrl')
+        obj = SaveVideo_technology(title=title, videoPublicId=videopublicid, videoUrl=videourl)
+        obj.save()
+
+        print('save in db')
+        return HttpResponse('done')
+    else:
+        print('video not saved')
