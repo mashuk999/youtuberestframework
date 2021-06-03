@@ -87,6 +87,9 @@ def scrapArticle(web_page):
     return a
 
 def getYoutubeTitle(s):
+
     s = s.split('/')[-1]
     s = s.replace('-',' ')
+    print('ddd'+s)
+    s=s.replace('html',' ')
     return str(re.sub(r"[A-Za-z]+('[A-Za-z]+)?",lambda mo: mo.group(0).capitalize(),s))
