@@ -22,7 +22,6 @@ urlpatterns = [
     path('techno/', include('technologyreview.urls')),
     path('entertain/', include('entertainment.urls')),
     path('admin/', admin.site.urls),
-    path('feed/', feed.Videofeed()),
 
     # Rest-FrameWork urls
     path('api-auth/', include('rest_framework.urls')),

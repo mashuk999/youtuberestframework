@@ -1,5 +1,5 @@
 from django.contrib.syndication.views import Feed
-from .models import SaveVideo_news
+from .models import SaveVideo_technology
 
 
 class Videofeed(Feed):
@@ -8,7 +8,7 @@ class Videofeed(Feed):
     description = "New posts of my blog."
 
     def items(self):
-        return SaveVideo_news.objects.all()
+        return SaveVideo_technology.objects.all()
 
     def item_title(self, item):
         return item.title

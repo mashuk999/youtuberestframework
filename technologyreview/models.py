@@ -4,6 +4,9 @@ class Technodb(models.Model):
     title = models.CharField(max_length=500)
     nextrandom = models.DateTimeField()
 
+    def __str__(self):
+        return self.title
+
 
 
 class SaveVideo_technology(models.Model):
