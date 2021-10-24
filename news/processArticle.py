@@ -27,6 +27,7 @@ def findArticle():
 
     try:
         content = scrapArticle(web_page)
+        
     except:
         return jsonFormat['title'], jsonFormat['description'], '', ''
     YTtitle = getYoutubeTitle(url)
