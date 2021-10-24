@@ -21,6 +21,8 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('techno/', include('technologyreview.urls')),
     path('entertain/', include('entertainment.urls')),
+    path('entertain_news/', include('entertainment_news.urls')),
+
     path('admin/', admin.site.urls),
 
     # Rest-FrameWork urls

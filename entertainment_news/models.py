@@ -1,6 +1,6 @@
 from django.db import models
 
-class Newsdb(models.Model):
+class entertainmentNewsdb(models.Model):
     title=models.CharField(max_length=500)
     nextrandom=models.DateTimeField()
 
@@ -8,7 +8,7 @@ class Newsdb(models.Model):
         return self.title
 
 
-class SaveVideo_news(models.Model):
+class entertainmentSaveVideonews(models.Model):
     title=models.CharField(max_length=500)
     videoPublicId = models.CharField(max_length=1000)
     videoUrl = models.CharField(max_length=1000)

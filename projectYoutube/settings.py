@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'entertainment',
+    'entertainment_news',
     'news',
     'technologyreview',
     'rest_framework',
