@@ -27,11 +27,11 @@ def getTitle(request):
             'content':content,
             'Ytitle':YTtitle
         }
-        # nextran = str(datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta( minutes=random.randrange(245, 350)))
-        # nextran = nextran[:19]
-        # nextran=(datetime.datetime.strptime(nextran,"%Y-%m-%d %H:%M:%S"))
-        # obj=Technodb(title=title,nextrandom=nextran)
-        # obj.save()
+        nextran = str(datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta( minutes=random.randrange(245, 350)))
+        nextran = nextran[:19]
+        nextran=(datetime.datetime.strptime(nextran,"%Y-%m-%d %H:%M:%S"))
+        obj=Technodb(title=title,nextrandom=nextran)
+        obj.save()
         return JsonResponse(data,safe=False)
 
 
