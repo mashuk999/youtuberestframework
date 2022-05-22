@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('nextrandom/', views.getNextrandom),
     path('gettitle/', views.getTitle),
+    path('gettitlefromaajtk/', views.getTitle_from_aajtk),
     path('savevideo/', views.savevideourl),
     path('feed/', feed.Videofeed()),
 
