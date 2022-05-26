@@ -19,6 +19,10 @@ class Newsserializer(serializers.Serializer):
     title=serializers.CharField(max_length=500)
     nextrandom=serializers.DateTimeField()
 
+class Newsserializer_for_aajtk(serializers.Serializer):
+    title=serializers.CharField(max_length=500)
+    nextrandom=serializers.DateTimeField()
+
 class Technologyserializer(serializers.Serializer):
     title=serializers.CharField(max_length=500)
     nextrandom=serializers.DateTimeField()

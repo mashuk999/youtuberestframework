@@ -1,7 +1,7 @@
 import urllib.request
 import xmltodict
 from bs4 import BeautifulSoup
-# from . import models
+from . import models
 import re
 # from models import *
 
@@ -38,9 +38,8 @@ def getUniqueArticle(jsonFormat):
         for item in jsonFormat:
             if len(getYoutubeTitle(item['guid']['#text'])) <= 100:
                 try:
-                    obj = item.title
-                    print(item.title)
-                except:
+                    obj = models.entertainmentNewsdb.objects.get(title=item['title'])
+                except models.entertainmentNewsdb.DoesNotExist:
                     return item
         return None
     except:
