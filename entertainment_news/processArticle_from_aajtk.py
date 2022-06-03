@@ -13,7 +13,7 @@ def dataFromThearticles():
         content = ""
         summary = ""
         YTtitle = ""
-        urls = ""
+        unique_url = ""
         url_list = []
         url = 'https://www.aajtak.in/entertainment/television'
         req = urllib.request.Request(
@@ -36,12 +36,9 @@ def dataFromThearticles():
             url = i.find_all('a')
             urls = url[0]['href']
             url_list.append(urls)
-            print(url_list)
-            print('line 38')
-            print(urls)
-            print('line 40')
-            # urls = getUniqueArticle(url_list)
-        return articleContent(title,content,summary,YTtitle, urls)
+            # print(url_list)
+            unique_url = getUniqueArticle(url_list)
+        return articleContent(title,content,summary,YTtitle, unique_url)
     except Exception as e:
         print(e)
 
@@ -111,21 +108,26 @@ def YtTitle(urls):
         s = urls.split('/')[-1]
         s = s.replace('-', ' ')
         s = s.split('tmov')
-        return str(re.sub(r"[A-Za-z]+('[A-Za-z]+)?", lambda mo: mo.group(0).capitalize(), s[0]))
+        yttitle = str(re.sub(r"[A-Za-z]+('[A-Za-z]+)?", lambda mo: mo.group(0).capitalize(), s[0]))
+        return yttitle
     except Exception as e:
         print(e)
 
 
 
-# def getUniqueArticle(urls):
-#     article_title = ""
-#     for url in urls:
-#         try:
-#             obj = models.entertainmentNewsdb_for_aajtk.objects.get(title=article_title)
-#             print('line 128')
-#             print(obj)
-#         except models.entertainmentNewsdb_for_aajtk.DoesNotExist:
-#             return url
+def getUniqueArticle(urls):
+    for url in urls:
+        try:
+            s = url.split('/')[-1]
+            s = s.replace('-', ' ')
+            s = s.split('tmov')
+            title_from_url = str(re.sub(r"[A-Za-z]+('[A-Za-z]+)?", lambda mo: mo.group(0).capitalize(), s[0]))
+            obj = models.entertainmentSaveVideonews_for_aajtk.objects.get(title=title_from_url)
+            print('line 124')
+            print(obj)
+            print('line 126')
+        except models.entertainmentSaveVideonews_for_aajtk.DoesNotExist:
+            return url
 
 
 
@@ -138,6 +140,10 @@ def YtTitle(urls):
 
 #-----------------------------------------
 # ----------------------------------------
+
+
+
+
 
 
 
