@@ -67,7 +67,7 @@ def articleContent(title,content, description, YTtitle, urls):
         description = getArticleTitle(soup)
         # print(description)
         # print('line 63')
-        Yttitle = YtTitle(urls)
+        Yttitle = YtTitle(soup)
 
         # print(Yttitle)
         # print('line 67')
@@ -102,16 +102,16 @@ def getArticleTitle(soup):
 
 
 
-def YtTitle(urls):
+def YtTitle(soup):
     try:
-        # print(urls)
-        s = urls.split('/')[-1]
-        s = s.replace('-', ' ')
-        s = s.split('tmov')
-        yttitle = str(re.sub(r"[A-Za-z]+('[A-Za-z]+)?", lambda mo: mo.group(0).capitalize(), s[0]))
-        return yttitle
+        articletitle = soup.find_all("h1")
+        for i in articletitle:
+            articletitle = i.get_text()
+            # print(articletitle)
+            return articletitle
     except Exception as e:
         print(e)
+
 
 
 

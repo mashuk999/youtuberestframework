@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import *
 from rest_framework.serializers import Serializer, FileField
+from entertainment_news.models import entertainmentSaveVideonews_for_aajtk
 
 
 class UploadSerializer(Serializer):
@@ -42,5 +43,10 @@ class Get_Savevideoserializer(serializers.ModelSerializer):
         model = SaveVideo_entertainment
         fields = ['nameofvideo']
 
+
+class Get_Savevideoserializer_of_aajtk(serializers.ModelSerializer):
+    class Meta:
+        model = entertainmentSaveVideonews_for_aajtk
+        fields = ['videoPublicId']
 
 
