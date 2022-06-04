@@ -14,7 +14,7 @@ def cleanupFunction(request):
         print(NextDay_Date)
         formatted = NextDay_Date.strftime("%y-%m-%d")
         print(formatted)
-        topics = entertainmentSaveVideonews_for_aajtk.objects.filter(videoPublicId=formatted)
+        topics = entertainmentSaveVideonews_for_aajtk.objects.filter(videoPublicId__icontains=formatted)
         print(topics)
         serializer = Get_Savevideoserializer_of_aajtk(topics, many=True)
 
